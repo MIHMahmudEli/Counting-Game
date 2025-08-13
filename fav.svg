@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- Gradient background -->
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#6dd5ed"/>
+      <stop offset="1" stop-color="#2193b0"/>
+    </linearGradient>
+    <!-- subtle glow behind the number -->
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- rounded square card -->
+  <rect x="2" y="2" width="60" height="60" rx="14" fill="url(#g)"/>
+
+  <!-- tiny crown to suggest “unbeatable/computer wins” -->
+  <path d="M18 20l6 5 8-8 8 8 6-5v10H18z" fill="#fff" opacity=".9"/>
+
+  <!-- big 21 -->
+  <!-- Using text keeps the file light. For best consistency across systems, we add a stroke. -->
+  <text x="32" y="46"
+        text-anchor="middle"
+        font-family="Segoe UI, Inter, Arial, sans-serif"
+        font-weight="900"
+        font-size="32"
+        fill="#ffffff"
+        stroke="#0d5161"
+        stroke-width="1.6"
+        filter="url(#glow)">
+    21
+  </text>
+</svg>
