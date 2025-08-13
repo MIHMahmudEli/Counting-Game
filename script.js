@@ -6,19 +6,17 @@ const buttons = document.querySelectorAll("#buttons button");
 const countDisplay = document.getElementById("count");
 const turnIndicator = document.getElementById("turn-indicator");
 const resultDisplay = document.getElementById("result");
-const gameContainer = document.getElementById("game-container");
-const startContainer = document.getElementById("start-container");
 
-// Hide game until start
-gameContainer.style.display = "none";
+// The game container is always visible
+// No need to hide start-container
 
-function startGame(firstPlayer) {
+function chooseFirst(firstPlayer) {
+    if (gameOver) restartGame(); // reset if previous game ended
+
     count = 0;
     gameOver = false;
     currentTurn = firstPlayer;
 
-    startContainer.style.display = "none";
-    gameContainer.style.display = "block";
     resultDisplay.textContent = "";
     updateCountDisplay();
     updateButtons();
@@ -34,9 +32,7 @@ function startGame(firstPlayer) {
 function updateCountDisplay() {
     countDisplay.textContent = count;
     countDisplay.style.transform = "scale(1.3)";
-    setTimeout(() => {
-        countDisplay.style.transform = "scale(1)";
-    }, 200);
+    setTimeout(() => countDisplay.style.transform = "scale(1)"), 200;
 }
 
 function updateButtons() {
@@ -70,12 +66,7 @@ function playerMove(num) {
 }
 
 function computerMove() {
-    let move;
-    if (count % 4 === 0) {
-        move = 1;
-    } else {
-        move = 4 - (count % 4);
-    }
+    let move = count % 4 === 0 ? 1 : 4 - (count % 4);
     if (move > 3) move = 3;
 
     for (let i = 0; i < move; i++) {
@@ -117,9 +108,8 @@ function restartGame() {
     count = 0;
     gameOver = false;
     currentTurn = null;
-    startContainer.style.display = "block";
-    gameContainer.style.display = "none";
     resultDisplay.textContent = "";
     updateCountDisplay();
     updateButtons();
+    turnIndicator.textContent = "Your Turn";
 }
