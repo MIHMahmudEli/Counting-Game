@@ -1,13 +1,11 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Counting Game - Computer Always Wins</title>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/svg+xml" href="fav.svg">
 </head>
-
 <body>
 
     <h1>Counting Game</h1>
@@ -25,27 +23,21 @@
     </div>
 
     <!-- Game area -->
-<div id="game-container">
-    <h2>Who moves first?</h2>
-    <button onclick="startGame('player')">You</button>
-    <button onclick="startGame('computer')">Computer</button>
-    
-    <h3 id="turn-indicator">Your Turn</h3>
-    <h1 id="count">0</h1>
-    <div id="buttons">
-        <button onclick="playerMove(1)">+1</button>
-        <button onclick="playerMove(2)">+2</button>
-        <button onclick="playerMove(3)">+3</button>
+    <div id="game-container" style="display: none;">
+        <h3 id="turn-indicator">Your Turn</h3>
+        <h1 id="count">0</h1>
+        <div id="buttons">
+            <button onclick="playerMove(1)">+1</button>
+            <button onclick="playerMove(2)">+2</button>
+            <button onclick="playerMove(3)">+3</button>
+        </div>
+        <div id="result"></div>
     </div>
-    <div id="result"></div>
-</div>
 
-  <div id="developer-credit">
+    <div id="developer-credit">
         Developed by <a href="https://www.facebook.com/mihmahmudeli1002" target="_blank" rel="noopener noreferrer">Mohsin Eli</a>
     </div>
 
-
     <script src="script.js"></script>
 </body>
-
 </html>

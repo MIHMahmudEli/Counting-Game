@@ -1,96 +1,95 @@
+/* Full-screen centering */
 body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
     font-family: 'Segoe UI', sans-serif;
     background: linear-gradient(135deg, #6dd5ed, #2193b0);
-    text-align: center;
     padding: 20px;
     margin: 0;
+    text-align: center;
 }
 
+/* Titles and text */
 h1 {
     color: white;
-    font-size: 36px;
+    font-size: clamp(28px, 4vw, 60px);
     margin-bottom: 10px;
 }
 
 p {
     color: #f0f0f0;
-    font-size: 18px;
+    font-size: clamp(14px, 1.5vw, 18px);
 }
 
-/* Rule box styling */
+/* Rule Box */
 .rule-box {
     background: #fff4d6;
     border-left: 6px solid #ff9800;
-    padding: 10px 15px;
+    padding: clamp(10px, 1.5vw, 15px);
     border-radius: 8px;
-    width: fit-content;
+    width: clamp(300px, 50%, 600px);
     margin: 0 auto 20px auto;
     text-align: left;
     box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    word-wrap: break-word;
 }
 
 .rule-box h2 {
     margin: 0;
     color: #ff9800;
-    font-size: 20px;
+    font-size: clamp(18px, 2vw, 22px);
 }
 
 .rule-box p {
     margin: 5px 0 0 0;
-    font-size: 16px;
+    font-size: clamp(14px, 1.5vw, 18px);
     color: #333;
 }
 
-/* Start container */
-#start-container {
+/* Containers */
+#start-container,
+#game-container {
     background: white;
-    width: 350px;
-    margin: auto;
-    padding: 20px;
+    width: clamp(300px, 50%, 600px);
+    padding: clamp(15px, 2vw, 30px);
     border-radius: 15px;
     box-shadow: 0 8px 20px rgba(0,0,0,0.2);
     margin-bottom: 20px;
 }
 
-#start-container h2 {
-    font-size: 20px;
-    margin-bottom: 15px;
-    color: #333;
-}
-
-/* Game container */
-#game-container {
-    background: white;
-    width: 350px;
-    margin: auto;
-    padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-}
-
+/* Turn Indicator */
 #turn-indicator {
-    font-size: 20px;
+    font-size: clamp(18px, 2vw, 28px);
     font-weight: bold;
     margin-bottom: 15px;
     color: #444;
 }
 
+/* Count Display */
 #count {
-    font-size: 80px;
+    font-size: clamp(60px, 10vw, 150px);
     font-weight: bold;
     color: #333;
     margin: 20px 0;
     transition: transform 0.3s ease-in-out;
 }
 
+/* Buttons */
 #buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: clamp(8px, 1vw, 15px);
     margin: 20px 0;
 }
 
 button {
-    font-size: 20px;
+    font-size: clamp(16px, 2vw, 24px);
     margin: 10px;
-    padding: 12px 25px;
+    padding: clamp(8px, 1.5vw, 15px) clamp(15px, 3vw, 30px);
     cursor: pointer;
     border: none;
     border-radius: 8px;
@@ -112,8 +111,9 @@ button:disabled {
     cursor: not-allowed;
 }
 
+/* Result Display */
 #result {
-    font-size: 24px;
+    font-size: clamp(20px, 2vw, 28px);
     font-weight: bold;
     margin-top: 15px;
 }
@@ -121,24 +121,24 @@ button:disabled {
 .lose { color: red; }
 .win { color: green; }
 
-
+/* Developer Credit */
 #developer-credit {
-  position: fixed;
-  bottom: 10px;
-  right: 10px;
-  font-size: 0.8rem;
-  color: rgba(255, 255, 255, 0.6);
-  font-family: Arial, sans-serif;
-  user-select: none;
-  z-index: 1000;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    font-size: clamp(0.6rem, 1vw, 0.8rem);
+    color: rgba(255, 255, 255, 0.6);
+    font-family: Arial, sans-serif;
+    user-select: none;
+    z-index: 1000;
 }
 
 #developer-credit a {
-  color: rgba(255, 255, 255, 0.8);
-  text-decoration: none;
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
 }
 
 #developer-credit a:hover {
-  text-decoration: underline;
-  color: white;
+    text-decoration: underline;
+    color: white;
 }

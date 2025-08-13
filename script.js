@@ -71,18 +71,13 @@ function playerMove(num) {
 
 function computerMove() {
     let move;
-
-    // Strategy: aim for a multiple of 4
     if (count % 4 === 0) {
-        move = 1; // If already multiple of 4, pick 1
+        move = 1;
     } else {
         move = 4 - (count % 4);
     }
-
-    // Make sure it's never more than 3
     if (move > 3) move = 3;
 
-    // Play move
     for (let i = 0; i < move; i++) {
         count++;
         updateCountDisplay();
@@ -105,26 +100,26 @@ function endGame() {
 }
 
 function showRestartButton() {
+    const existing = document.getElementById("restart-btn");
+    if (existing) existing.remove();
+
     const restartBtn = document.createElement("button");
+    restartBtn.id = "restart-btn";
     restartBtn.textContent = "🔄 Restart Game";
     restartBtn.style.background = "#9b59b6";
     restartBtn.style.marginTop = "15px";
-    restartBtn.onclick = restartSameTurn;
+    restartBtn.onclick = restartGame;
     resultDisplay.appendChild(document.createElement("br"));
     resultDisplay.appendChild(restartBtn);
 }
 
-function restartSameTurn() {
+function restartGame() {
     count = 0;
     gameOver = false;
+    currentTurn = null;
+    startContainer.style.display = "block";
+    gameContainer.style.display = "none";
     resultDisplay.textContent = "";
     updateCountDisplay();
     updateButtons();
-
-    if (currentTurn === "computer") {
-        turnIndicator.textContent = "Computer's Turn";
-        setTimeout(computerMove, 800);
-    } else {
-        turnIndicator.textContent = "Your Turn";
-    }
 }
