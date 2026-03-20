@@ -13,6 +13,13 @@ export default class GameController {
         this.model.reset();
         this.model.setTurn(firstPlayer);
 
+        // Track game start
+        if (typeof gtag === 'function') {
+            gtag('event', 'game_start', {
+                'first_player': firstPlayer
+            });
+        }
+
         this.view.clearResult();
         this.view.updateCount(this.model.count);
         this.view.updateTurn(this.model.currentTurn, this.model.gameOver);
@@ -26,6 +33,14 @@ export default class GameController {
 
     handlePlayerMove(num) {
         if (this.model.gameOver || this.model.currentTurn !== "player") return;
+
+        // Track player move
+        if (typeof gtag === 'function') {
+            gtag('event', 'player_move', {
+                'move_value': num,
+                'current_count': this.model.count
+            });
+        }
 
         // Animate player move increments
         this.processMove(num, "computer");
@@ -72,6 +87,15 @@ export default class GameController {
         const message = isWin
             ? this.model.getRandomWinResponse() // "Luck-based" win humor
             : this.model.getRandomRoast(); // Sassy loss roast
+
+        // Track game end
+        if (typeof gtag === 'function') {
+            gtag('event', 'game_end', {
+                'winner': winner,
+                'is_win': isWin,
+                'final_count': this.model.count
+            });
+        }
 
         this.view.renderResult(message, isWin);
         this.view.showRestartButton(this.restartGame.bind(this));
